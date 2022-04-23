@@ -1,5 +1,5 @@
 import type { ErrorInfo, ReactNode } from 'react'
-import React, { Component } from 'react'
+import { Component } from 'react'
 import styled from 'styled-components'
 
 interface Props {
@@ -50,7 +50,7 @@ const Message = styled.div`
 const ErrorBoundaryFallbackComponent = () => (
   <Layout>
     <Message>
-      Something Error Ooccurring
+      Something Error Occurring
       <span role="img" aria-label="face-emoji">
         😞
       </span>

@@ -1,6 +1,6 @@
 import { Router } from '@reach/router'
 import React from 'react'
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom/client'
 import { RecoilRoot } from 'recoil'
 
 import './index.css'
@@ -9,7 +9,7 @@ import ErrorBoundary from './ErrorBoundary'
 import { NotFound } from './NotFound'
 import * as serviceWorker from './serviceWorkerRegistration'
 
-ReactDOM.render(
+ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ErrorBoundary>
       <RecoilRoot>
@@ -21,8 +21,7 @@ ReactDOM.render(
         </Router>
       </RecoilRoot>
     </ErrorBoundary>
-  </React.StrictMode>,
-  document.getElementById('root')
+  </React.StrictMode>
 )
 
 // If you want your app to work offline and load faster, you can change

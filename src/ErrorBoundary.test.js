@@ -1,13 +1,13 @@
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
 import ErrorBoundary from './ErrorBoundary'
 
 test('should be render fallback page Error was thrown', () => {
   const InvalidComponent = () => undefined
-  const screen = render(
+  render(
     <ErrorBoundary>
       <InvalidComponent />
     </ErrorBoundary>
   )
-  expect(screen.getByText('Something Error Ooccurring')).toBeInTheDocument()
+  expect(screen.getByText('Something Error Occurring')).toBeInTheDocument()
 })

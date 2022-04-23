@@ -1,5 +1,4 @@
-import { fireEvent } from '@testing-library/react'
-import React from 'react'
+import { fireEvent, screen } from '@testing-library/react'
 
 import type { AppState } from '../../dataStructure'
 import { renderWithRecoilRoot } from '../../testUtil'
@@ -27,7 +26,7 @@ const initialRecoilState: AppState = {
 }
 
 test('should be render 3 todo items in initialAppState', () => {
-  const screen = renderWithRecoilRoot(<TodoList path="/" />, initialRecoilState)
+  renderWithRecoilRoot(<TodoList path="/" />, initialRecoilState)
 
   expect(screen.getByTestId('todo-list')).toBeInTheDocument()
   expect(screen.getByTestId('todo-list').children.length).toBe(3)
@@ -38,7 +37,7 @@ test('should be render 3 todo items in initialAppState', () => {
 })
 
 test('should be work delete todo button', () => {
-  const screen = renderWithRecoilRoot(<TodoList path="/" />, initialRecoilState)
+  renderWithRecoilRoot(<TodoList path="/" />, initialRecoilState)
 
   // delete first item
   fireEvent.click(screen.getAllByTestId('delete-todo-btn')[0])
@@ -50,19 +49,37 @@ test('should be work delete todo button', () => {
 })
 
 test('should be work correctly all completed:true|false checkbox toggle button', () => {
-  const screen = renderWithRecoilRoot(<TodoList path="/" />, initialRecoilState)
+  renderWithRecoilRoot(<TodoList path="/" />, initialRecoilState)
 
   // toggle on
   fireEvent.click(screen.getByTestId('toggle-all-btn'))
   // should be completed all todo items
-  expect((screen.getAllByTestId('todo-item-complete-check')[0] as HTMLInputElement).checked).toBe(true) /* eslint-disable-line prettier/prettier */
-  expect((screen.getAllByTestId('todo-item-complete-check')[1] as HTMLInputElement).checked).toBe(true) /* eslint-disable-line prettier/prettier */
-  expect((screen.getAllByTestId('todo-item-complete-check')[2] as HTMLInputElement).checked).toBe(true) /* eslint-disable-line prettier/prettier */
+  expect(
+    (screen.getAllByTestId('todo-item-complete-check')[0] as HTMLInputElement)
+      .checked
+  ).toBe(true) /* eslint-disable-line prettier/prettier */
+  expect(
+    (screen.getAllByTestId('todo-item-complete-check')[1] as HTMLInputElement)
+      .checked
+  ).toBe(true) /* eslint-disable-line prettier/prettier */
+  expect(
+    (screen.getAllByTestId('todo-item-complete-check')[2] as HTMLInputElement)
+      .checked
+  ).toBe(true) /* eslint-disable-line prettier/prettier */
 
   // toggle off
   fireEvent.click(screen.getByTestId('toggle-all-btn'))
   // should be not comleted all todo items
-  expect((screen.getAllByTestId('todo-item-complete-check')[0] as HTMLInputElement).checked).toBe(false) /* eslint-disable-line prettier/prettier */
-  expect((screen.getAllByTestId('todo-item-complete-check')[1] as HTMLInputElement).checked).toBe(false) /* eslint-disable-line prettier/prettier */
-  expect((screen.getAllByTestId('todo-item-complete-check')[2] as HTMLInputElement).checked).toBe(false) /* eslint-disable-line prettier/prettier */
+  expect(
+    (screen.getAllByTestId('todo-item-complete-check')[0] as HTMLInputElement)
+      .checked
+  ).toBe(false) /* eslint-disable-line prettier/prettier */
+  expect(
+    (screen.getAllByTestId('todo-item-complete-check')[1] as HTMLInputElement)
+      .checked
+  ).toBe(false) /* eslint-disable-line prettier/prettier */
+  expect(
+    (screen.getAllByTestId('todo-item-complete-check')[2] as HTMLInputElement)
+      .checked
+  ).toBe(false) /* eslint-disable-line prettier/prettier */
 })

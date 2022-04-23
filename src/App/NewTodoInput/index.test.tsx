@@ -1,12 +1,11 @@
-import { fireEvent } from '@testing-library/react'
-import React from 'react'
+import { fireEvent, screen } from '@testing-library/react'
 
 import { renderWithRecoilRoot } from '../../testUtil'
 
 import NewTodoTextInput from './index'
 
 test('should be render <TodoTextInput/>', () => {
-  const screen = renderWithRecoilRoot(<NewTodoTextInput />)
+  renderWithRecoilRoot(<NewTodoTextInput />)
   const input = screen.getByTestId('new-todo-input-text') as HTMLInputElement
 
   // Header big text
